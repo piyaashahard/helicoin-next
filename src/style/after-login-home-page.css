@@ -1,0 +1,233 @@
+.after-login-home-page {
+  background-image: url(./../Images/signupbg.png);
+  width: 100%;
+  height: 100%;
+  padding-top: 75px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; */
+
+  .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .number {
+      .points-shower {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(44, 190, 215, 1) 0%,
+          rgba(23, 101, 115, 1) 100%
+        );
+        width: 250px;
+        border-radius: 10px;
+        height: 50px;
+        gap: 5px;
+
+        img {
+          width: 33px;
+          height: 33px;
+        }
+
+        p {
+          font-size: 20px;
+          text-align: center;
+          color: white;
+          font-weight: 600;
+        }
+      }
+
+      .fuel {
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+    }
+
+    .icons {
+      margin-top: 65px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+
+      img {
+        width: 44px;
+        height: 45px;
+      }
+      .left,
+      .right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        p {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .fuel_balance_checker {
+      position: relative;
+
+      .round {
+        position: absolute;
+        width: 17px;
+        height: 17px;
+        background-color: black;
+        border-radius: 50%;
+        bottom: 5px;
+        left: calc(50%);
+
+        &::before {
+          content: "";
+          border-left: 3px solid #0000;
+          border-right: 3px solid #0000;
+          border-bottom: 60px solid #000;
+          position: absolute;
+          bottom: 10px;
+          left: 4px;
+          transform-origin: bottom;
+          transform: rotate(var(--rotation-degree));
+        }
+      }
+    }
+
+    .liter-balance {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 55px;
+      margin-top: 20px;
+      gap: 5px;
+
+      button {
+        background: rgb(2, 0, 36);
+        background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(55, 141, 183, 1) 0%,
+          rgba(29, 74, 97, 1) 100%
+        );
+        width: 220px;
+        height: 55px;
+        border-radius: 10px;
+        font-size: 22px;
+        color: white;
+        font-weight: 600;
+      }
+    }
+
+    p {
+      margin-top: 7px;
+      font-weight: 600;
+    }
+
+    .bannar {
+      position: relative;
+      height: 160px;
+      margin-top: 25px;
+      overflow: hidden;
+
+      .slick-track {
+        width: 380px !important;
+        height: 160px !important;
+      }
+
+      .slick-list {
+        width: 380px;
+      }
+
+      .flex-row {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .slider-banner-div {
+        width: 380px !important;
+      }
+
+      .slick-dots {
+        list-style: circle;
+        display: flex !important;
+        flex-direction: row;
+        color: white;
+
+        .slick-active {
+          list-style: disc;
+        }
+      }
+
+      img {
+        width: 380px;
+      }
+
+      .time {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 7px;
+        left: calc(50% - 60px);
+        width: 121px;
+        height: 20px;
+        text-align: center;
+        background-color: #645113;
+        font-size: 10px;
+        color: #dc940f;
+        border-radius: 5px;
+        z-index: 855555555555555555555523;
+      }
+    }
+  }
+
+  .bottom {
+    margin: 20px;
+    overflow: hidden;
+
+    .slick-track {
+      display: flex;
+    }
+
+    .slick-dots {
+      display: flex !important;
+      list-style: circle;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+
+      .slick-active {
+        list-style: disc;
+      }
+
+      button {
+        display: none;
+      }
+    }
+  }
+}
+
+.red {
+  color: red;
+}
