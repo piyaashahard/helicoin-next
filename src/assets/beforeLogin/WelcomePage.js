@@ -30,8 +30,7 @@ export default function WelcomePage() {
           Welcome to <br /> <Link href="/">HeliCoin</Link>
         </h1>
         <p>
-          "Be brave ! Strap in, grab the mic, gear up, and fly the chopper.....
-          because the crypto skies are yours to conquer!"
+          {`"Be brave ! Strap in, grab the mic, gear up, and fly the chopper..... because the crypto skies are yours to conquer!"`}
         </p>
 
         <button onClick={handleGetStarted} className="button">

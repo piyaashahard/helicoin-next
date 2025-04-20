@@ -50,9 +50,9 @@ const LoginSuccessfulMessage = () => {
 
         <h3>Welcome Aboard, Pioneer!</h3>
         <p>
-          Congratulations! You've successfully joined the Heli-Coin ecosystem,
-          where innovation meets opportunity. Your account is now ready to
-          explore the world of decentralized possibilities.
+          {
+            "Congratulations! You've successfully joined the Heli-Coin ecosystem, where innovation meets opportunity. Your account is now ready to explore the world of decentralized possibilities."
+          }
         </p>
 
         <h4>Please wait for a while...</h4>
