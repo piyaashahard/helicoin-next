@@ -18,7 +18,12 @@ import Slider from "react-slick";
 import Link from "next/link";
 
 const HomePage = () => {
-  const [points, setPoints] = useState(20175.32);
+  const [id, setId] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [userData, setUserData] = useState(null);
+
+  const [points, setPoints] = useState(0);
   const [fuel, setFuel] = useState(26);
   const [rotate, setRotate] = useState(45);
   const [refilTime, setRefilTime] = useState("3:48:56");
@@ -33,11 +38,43 @@ const HomePage = () => {
       try {
         const parsedUser = JSON.parse(storedUser);
         setUser(parsedUser);
+        setId(parsedUser?.user_id_public_information?._id);
       } catch (error) {
         console.error("Error parsing user info from localStorage:", error);
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (!id) {
+      setLoading(false);
+      setError("No user ID provided");
+      return;
+    }
+
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`/api/user/${id}`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await res.json();
+        setUserData(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, [id]);
+
+  useEffect(() => {
+    if (userData) {
+      setPoints(userData.points);
+    }
+  }, [userData]);
 
   const settings = {
     dots: true,
@@ -140,10 +177,10 @@ const HomePage = () => {
           </div>
 
           <div className="right">
-            <div className="img">
+            <Link href={"/invite"} className="img">
               <Image src={invite} alt="Invite Icon" />
               <span>Invite</span>
-            </div>
+            </Link>
             <Link href={"/"}>
               Participate in whitepaper <IoIosArrowDroprightCircle />
             </Link>

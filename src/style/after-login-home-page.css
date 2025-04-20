@@ -272,8 +272,11 @@
       }
       .right {
         .img {
+          background-color: transparent;
+          color: black;
+
           span {
-            top: 0px !important;
+            top: -7px !important;
           }
         }
       }

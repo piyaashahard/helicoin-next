@@ -12,6 +12,8 @@ import invite from "./invite.png";
 import avaterJ from "./avater.png";
 import loading_gif from "./loading.gif";
 import error from "./404.png";
+import invite_gift_wrapper from "./invite_gift_wrapper.png";
+import copy_icon from "./cpoy_icon.png";
 
 import stock_down from "./Trade_Down.png";
 import stock_up from "./Trande_Up.png";
@@ -33,4 +35,6 @@ export {
   error,
   stock_up,
   stock_down,
+  invite_gift_wrapper,
+  copy_icon,
 };

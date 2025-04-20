@@ -74,7 +74,10 @@ const Page = () => {
   return (
     <>
       <nav>
-        <Image src={home_icon} alt="Home Icon" />
+        <Link href={"/"}>
+          {" "}
+          <Image src={home_icon} alt="Home Icon" />
+        </Link>
         <div className="bar">{"Pilot's Profile"}</div>
       </nav>
 
