@@ -75,7 +75,7 @@ const Page = () => {
     <>
       <nav>
         <Image src={home_icon} alt="Home Icon" />
-        <div className="bar">Pilot's Profile</div>
+        <div className="bar">{"Pilot's Profile"}</div>
       </nav>
 
       {page === "Profile" ? (

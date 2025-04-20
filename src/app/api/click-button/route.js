@@ -38,7 +38,7 @@ export async function POST(req) {
       );
     }
 
-    // Update the user's points and lastClickTime
+    // Update the user points and lastClickTime
     user.points += 10;
     user.lastClickTime = now;
     await user.save();

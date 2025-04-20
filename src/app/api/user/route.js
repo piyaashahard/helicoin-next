@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import User from "../../../models/User"; // Adjust the path to your model
 import connectDb from "../../../lib/db"; // Adjust the path to your DB connection helper
 
-// Handle GET request to fetch all users or current user's data
+// Handle GET request to fetch all users or current user data
 export async function GET() {
   try {
     await connectDb();
