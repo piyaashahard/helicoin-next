@@ -1,9 +1,10 @@
 "use client";
 
+import Error from "@/assets/Error";
 import { sign_up_logo } from "@/Images";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -46,6 +47,33 @@ const SignUpPage = () => {
       setMessage("❌ Failed to sign up. Try again.");
     }
   };
+
+  const [showSignup, setShowSignup] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const userData = localStorage.getItem(
+          "HELI-COIN_USER_PUBLIC_INFORMATIONS"
+        );
+        if (userData) {
+          const parsed = JSON.parse(userData);
+          if (parsed?.user_id_public_information?.email) {
+            setShowSignup(false);
+          } else {
+            setShowSignup(true);
+          }
+        } else {
+          setShowSignup(true);
+        }
+      } catch (err) {
+        console.error("Failed to parse localStorage data", err);
+        setShowSignup(true);
+      }
+    }
+  }, []);
+
+  if (!showSignup === true) return <Error />;
 
   return (
     <>

@@ -1,11 +1,12 @@
 "use client";
 
+import Error from "@/assets/Error";
 import LoginSuccessfulMessage from "@/assets/LoginSuccessfulMessage";
 import { sign_up_logo } from "@/Images";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SignInPage = () => {
   const [formData, setFormData] = useState({
@@ -66,6 +67,33 @@ const SignInPage = () => {
       setMessage("❌ Failed to log in. Try again.");
     }
   };
+
+  const [showSignin, setShowSignin] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const userData = localStorage.getItem(
+          "HELI-COIN_USER_PUBLIC_INFORMATIONS"
+        );
+        if (userData) {
+          const parsed = JSON.parse(userData);
+          if (parsed?.user_id_public_information?.email) {
+            setShowSignin(false);
+          } else {
+            setShowSignin(true);
+          }
+        } else {
+          setShowSignin(true);
+        }
+      } catch (err) {
+        console.error("Failed to parse localStorage data", err);
+        setShowSignin(true);
+      }
+    }
+  }, []);
+
+  if (!showSignin === true) return <Error />;
 
   return (
     <>

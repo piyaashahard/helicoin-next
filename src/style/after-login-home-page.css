@@ -2,7 +2,7 @@
   background-image: url(./../Images/signupbg.png);
   width: 100%;
   height: 100%;
-  padding-top: 75px;
+  padding-top: 50px;
   /* display: flex;
   align-items: center;
   justify-content: center;
@@ -206,28 +206,100 @@
     margin: 20px;
     overflow: hidden;
 
-    .slick-track {
-      display: flex;
-    }
-
-    .slick-dots {
-      display: flex !important;
-      list-style: circle;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-
-      .slick-active {
-        list-style: disc;
+    .slider-container {
+      .slick-track {
+        display: flex;
       }
 
-      button {
-        display: none;
+      .slick-dots {
+        display: flex !important;
+        list-style: circle;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+
+        .slick-active {
+          list-style: disc;
+        }
+
+        button {
+          display: none;
+        }
+      }
+    }
+
+    .at-last-of-the-home-page {
+      position: relative;
+
+      .left,
+      .right {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 65px;
+
+        .img {
+          width: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+
+          span {
+            position: relative;
+            top: -10px;
+          }
+        }
+
+        a {
+          display: flex;
+          width: 250px;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+          background-color: #2dbed8;
+          color: white;
+          font-weight: 600;
+          height: 40px;
+          font-size: 17px;
+          border-radius: 10px;
+
+          svg {
+            color: black;
+            font-size: 25px;
+          }
+        }
+      }
+      .right {
+        .img {
+          span {
+            top: 0px !important;
+          }
+        }
+      }
+      .left {
+        a {
+          margin-top: 20px;
+        }
+      }
+
+      .status {
+        position: absolute;
+        top: -20px;
+        font-size: 14px;
+        right: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        .circle {
+          background-color: var(--color);
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+        }
       }
     }
   }
-}
-
-.red {
-  color: red;
 }

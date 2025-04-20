@@ -57,3 +57,10 @@ body {
   width: 100%;
   text-align: center;
 }
+
+.red {
+  color: red;
+}
+.green {
+  color: #04ca4f;
+}
