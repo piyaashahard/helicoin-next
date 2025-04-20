@@ -24,15 +24,20 @@ const Page = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [page, setPage] = useState("Profile");
 
+  // ✅ Use consistent key for localStorage
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("HELI_COIN_Theme") || "Light";
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("HELI_COIN_THEME") || "Light";
+    }
+    return "Light";
   });
 
   useEffect(() => {
-    localStorage.setItem("HELI_COIN_THEME", theme);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("HELI_COIN_THEME", theme);
+    }
   }, [theme]);
 
   const toggleTheme = () => {
@@ -40,11 +45,15 @@ const Page = () => {
   };
 
   useEffect(() => {
-    if (!id) return <Error />;
+    if (!id) {
+      setLoading(false);
+      setError("No user ID provided");
+      return;
+    }
 
     const fetchUser = async () => {
       try {
-        const res = await fetch(`/api/user/${id}`); // ✅ Corrected API endpoint
+        const res = await fetch(`/api/user/${id}`);
         if (!res.ok) {
           throw new Error("Failed to fetch user data");
         }
@@ -60,21 +69,20 @@ const Page = () => {
     fetchUser();
   }, [id]);
 
-  // Split email safely after data is loaded
   const splitedEmail = userData?.email?.split("@")[0];
 
   return (
     <>
       <nav>
         <Image src={home_icon} alt="Home Icon" />
-        <div className="bar">{"Pilot's Profile"}</div>
+        <div className="bar">Pilot's Profile</div>
       </nav>
 
       {page === "Profile" ? (
         <>
           {loading ? (
             <div className="Loading">
-              <Image src={loading_gif} alt="" />
+              <Image src={loading_gif} alt="Loading" />
             </div>
           ) : error ? (
             <p>Error: {error}</p>
@@ -95,7 +103,7 @@ const Page = () => {
                 <div className="main-div">
                   <div className="top">
                     <p>
-                      <FaRegAddressCard /> UID - {userData?._id}
+                      <FaRegAddressCard /> UID - {userData._id}
                     </p>
                     <p>
                       <RiNotification3Line />
@@ -109,7 +117,7 @@ const Page = () => {
                   </div>
                   <div className="middle">
                     <p>
-                      <LuRadioReceiver /> Sequrity
+                      <LuRadioReceiver /> Security
                     </p>
                     <p>
                       {theme === "Light" ? <MdNightlight /> : <MdLightMode />}{" "}
@@ -142,19 +150,19 @@ const Page = () => {
       )}
 
       <footer>
-        <Link href={"/"} className="main-logo">
-          <Image src={sign_up_logo} alt="" />
+        <Link href="/" className="main-logo">
+          <Image src={sign_up_logo} alt="Logo" />
         </Link>
         <div
           onClick={() => setPage("Statistic")}
-          className={`left ${page === "Statistic" && "active"}`}
+          className={`left ${page === "Statistic" ? "active" : ""}`}
         >
           <FiBarChart2 />
           Statistic
         </div>
         <div
           onClick={() => setPage("Profile")}
-          className={`right ${page === "Profile" && "active"}`}
+          className={`right ${page === "Profile" ? "active" : ""}`}
         >
           <RiAccountPinCircleLine />
           Profile
